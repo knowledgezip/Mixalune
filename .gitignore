@@ -1,0 +1,16 @@
+# Public distribution only: do not commit implementation or private settings.
+*.cs
+*.csproj
+*.sln
+*.slnx
+*.pdb
+*.map
+*.trx
+*.user
+.env
+.env.*
+connection.json
+bin/
+obj/
+node_modules/
+TestResults/
