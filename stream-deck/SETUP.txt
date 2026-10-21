@@ -1,0 +1,24 @@
+Mixalune Control for Elgato Stream Deck 0.1.0 - development preview
+Knowledgezip Media
+
+Windows 10/11 x64, Elgato Stream Deck 6.9 or later, and a Mixalune build exposing local API 1.0 are required.
+The native .NET runtime is included. No administrator privileges or cloud service is required.
+
+1. Open the .streamDeckPlugin file with Elgato Stream Deck and confirm installation.
+2. In Mixalune, open API Settings, enable its local API, and copy the token.
+3. In Stream Deck, drag an action from the Mixalune category onto a key.
+4. Select that key. Paste the token in Connection and click Save & connect.
+5. Choose the channel and, for volume actions, the bus and percentage.
+
+Connection settings apply to all buttons. Tokens are protected for your Windows account and are not stored in exported button settings. Leave the token blank to retain it. Connect/disconnect is persistent. Test uses the entered settings without saving them. Automatic reconnection resumes after a lost connection; no old control commands are replayed.
+
+Example: Volume Up, channel chosen from your channel list, Game / stream bus, 5 percent.
+Example: Toggle Channel Mute, channel chosen from your channel list.
+Example: Toggle Microphone Mute needs no channel selection.
+
+Volume percentages are normalized fader positions, not Mixalune's boosted gain percentages. Mute affects both buses. Removed channels remain selected as unavailable until you pick a replacement. Edition is Not reported when Mixalune does not provide it.
+
+This release provides key actions only, not Stream Deck + dial actions or Multi Actions.
+Local automated tests do not certify physical Stream Deck operation or audio stability. Complete live testing before production use.
+
+This package includes compiled control logic and required HTML/JavaScript UI assets. It excludes C# source, project files, debug symbols, and user credentials. Compiled binaries may still be reverse engineered. Nothing is uploaded automatically.
