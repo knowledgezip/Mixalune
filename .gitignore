@@ -1,0 +1,17 @@
+**/x64/
+**/Debug/
+**/Release/
+**/bin/
+**/obj/
+driver/MixaluneAudioDriver/package/
+driver/MixaluneAudioDriver/attestation/
+*.cat
+*.cer
+*.pdb
+*.pfx
+*.sys
+*.log
+*.user
+*password*.txt
+/setup.inf
+/setup.rpt

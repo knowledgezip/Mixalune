@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "adapterName": "Mixalune Virtual Audio Adapter",
+  "hardwareId": "Root\\MixaluneAudioDriver",
+  "renderEndpoint": {
+    "friendlyName": "Mixalune Game Mix",
+    "purpose": "Mixalune renders the final game mix here",
+    "format": { "sampleRate": 48000, "channels": 2, "sampleType": "pcm16" }
+  },
+  "captureEndpoint": {
+    "friendlyName": "Mixalune Virtual Microphone",
+    "purpose": "Games select this endpoint as their microphone",
+    "format": { "sampleRate": 48000, "channels": 1, "sampleType": "pcm16" }
+  },
+  "transport": "WaveRT paired render-to-capture circular buffer",
+  "base": "Microsoft Windows-driver-samples audio/sysvad"
+}
