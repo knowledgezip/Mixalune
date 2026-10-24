@@ -1,0 +1,22 @@
+name: Publish Mixalune Control to Macro Deck
+on:
+  release:
+    types: [published]
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  publish:
+    if: github.event.release.target_commitish == 'feature/mixalune-macro-deck' && startsWith(github.event.release.tag_name, 'v0.')
+    uses: Macro-Deck-App/GitHub-Actions/.github/workflows/publish-plugin.yml@v1
+    with:
+      source: macro-deck/source/src/Mixalune.Control
+      version: ${{ github.event.release.tag_name }}
+      changelog: ${{ github.event.release.body }}
+      test-path: macro-deck/source/Mixalune.Control.slnx
+      cli-version: 3.0.0-beta.19
+      build-per-platform: true
+      run-tests: true
+      run-stub-host: true
+      upload-artifact: true
+
