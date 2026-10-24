@@ -23,3 +23,8 @@ Only this Macro Deck plugin is MIT licensed. The repository workflow uses the of
 Update ../CHANGELOG.md under Unreleased, then move entries to a dated release heading when shipping. The manifest AI disclosure covers AI-assisted shipped assets/text; the plugin performs no AI interaction and sends no data to an AI service.
 
 
+
+## Installed-host verification (2026-10-24)
+
+Macro Deck 3.0.0-beta.19 on Windows loaded plugin 0.1.2 and displayed Ready, seven actions and 20 variables. The channel dropdown discovered Microphone, App Audio, Browser and Desktop. The tester confirmed successful installation, authenticated connection, and working live controls. These user-reported checks are separate from automated tests; extended audio stability, sleep/resume and clean-machine testing remain unverified.
+
