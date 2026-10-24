@@ -1,11 +1,9 @@
-# Mixalune
-Windows audio mixer beta releases from Knowledgezip Media.
+# Mixalune Control for Macro Deck 3
 
-## Macro Deck 3 plugin
+This branch contains the MIT-licensed Macro Deck plugin source, tests, documentation, and historical compiled previews.
 
-This branch contains the **Mixalune Control 0.1.0 development preview** for Macro Deck 3.
+- [Plugin source and build instructions](macro-deck/source/README.md)
+- [Downloads and setup](macro-deck/README.md)
+- [Changelog](macro-deck/CHANGELOG.md)
 
-- [Plugin download and setup](macro-deck/README.md)
-- [Changelog and upcoming changes](macro-deck/CHANGELOG.md)
-
-Compiled distribution only. Private implementation source, source archives, debug symbols, and credentials are excluded.
+The license in `macro-deck/source/LICENSE` applies to this plugin. Mixalune application and audio-engine source are not included. Elgato Stream Deck work remains on its separate branch.

@@ -1,16 +1,16 @@
-# Public distribution only: do not commit implementation or private settings.
-*.cs
-*.csproj
-*.sln
-*.slnx
+# Generated outputs and private configuration
+**/bin/
+**/obj/
+**/TestResults/
+**/.tools/
+**/artifacts/
+**/.macrodeck-dev-state/
 *.pdb
 *.map
 *.trx
 *.user
+*.suo
 .env
 .env.*
 connection.json
-bin/
-obj/
 node_modules/
-TestResults/

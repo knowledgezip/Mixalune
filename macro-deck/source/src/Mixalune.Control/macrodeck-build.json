@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "include": [
+    "Assets",
+    "Licenses"
+  ],
+  "targets": {
+    "win-x64": {
+      "executable": "dotnet",
+      "arguments": [
+        "publish",
+        "Mixalune.Control.csproj",
+        "-c",
+        "Release",
+        "-r",
+        "win-x64",
+        "--self-contained",
+        "false",
+        "-p:UseAppHost=false",
+        "-p:DebugType=None",
+        "-p:DebugSymbols=false",
+        "-o",
+        "bin/publish/win-x64-binary-only"
+      ],
+      "output": "bin/publish/win-x64-binary-only"
+    }
+  }
+}

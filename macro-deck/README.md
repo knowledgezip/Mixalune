@@ -28,6 +28,7 @@ Game/stream and monitor volumes can be controlled separately; mute is shared. Pe
 
 Record new features and fixes under **Unreleased** in [CHANGELOG.md](CHANGELOG.md). For each release, add a dated version entry and update the compiled package, checksum, and setup instructions together.
 
-This branch contains only distribution files. Do not upload the private source tree or source archive. The package excludes C# source, debug symbols, and user credentials; compiled binaries can still be reverse engineered.
+The Macro Deck plugin is now open source under MIT; see [source and build instructions](source/README.md). The historical 0.1.0 download above remains a development preview. Version 0.1.1 is being prepared for Store review using SDK beta.19. Mixalune application and Stream Deck source are not included.
 
 The [existing 0.1.0 prerelease](https://github.com/knowledgezip/Mixalune/releases/tag/mixalune-control-v0.1.0) remains available. The [Elgato Stream Deck plugin](https://github.com/knowledgezip/Mixalune/tree/feature/mixalune-stream-deck) has its own separate branch and package format.
+

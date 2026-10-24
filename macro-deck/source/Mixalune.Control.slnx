@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/Mixalune.Control/Mixalune.Control.csproj" />
+  <Project Path="tests/Mixalune.Control.Tests/Mixalune.Control.Tests.csproj" />
+</Solution>

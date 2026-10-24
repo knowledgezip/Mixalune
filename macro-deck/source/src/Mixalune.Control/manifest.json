@@ -1,0 +1,36 @@
+{
+  "manifestVersion": 1,
+  "id": "com.knowledgezip.mixalune-control",
+  "name": "Mixalune Control",
+  "version": "0.1.1",
+  "description": "Local volume and mute controls for Mixalune.",
+  "icon": "Assets/icon.png",
+  "entrypoints": {
+    "win-x64": {
+      "executable": "runtimes/win-x64/Mixalune.Control.dll",
+      "runtime": {
+        "kind": "FrameworkDependent",
+        "dotnetVersion": "10.0"
+      }
+    }
+  },
+  "publisher": {
+    "name": "Knowledgezip Media"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/knowledgezip/Mixalune",
+  "compatibility": {
+    "macroDeck": ">=3.0.0-beta.19"
+  },
+  "permissions": [
+    "host:config",
+    "host:variables",
+    "net:outbound"
+  ],
+  "ai": {
+    "interaction": false,
+    "generatedContent": false,
+    "generatedAssets": true,
+    "services": []
+  }
+}
