@@ -11,7 +11,7 @@ Macro Deck supplies the .NET 10/ASP.NET Core runtime used by this framework-depe
 ## Install the local package
 
 In Macro Deck's Integrations page, use **Install from file…** to select
-`com.knowledgezip.mixalune-control-0.1.1.macroDeckPlugin`. Review its identity and install it.
+`com.knowledgezip.mixalune-control-0.1.2.macroDeckPlugin`. Review its identity and install it.
 This is a local unsigned development artifact, not a store-approved release.
 
 Do not rename it to a DLL or use Macro Deck 2's plugin-folder installation procedure. The official CLI assembles a manifest and `runtimes/win-x64` payload with file digests.
@@ -29,4 +29,5 @@ Configure Mixalune Control in Macro Deck with the port and copied token. Setup t
 ## Uninstall
 
 Remove or disable the integration using Macro Deck's plugin management. Its shutdown cancels pending work and disconnects from Mixalune. Mixalune remains running. Remove the saved integration configuration through the host if you also want its stored credential removed.
+
 

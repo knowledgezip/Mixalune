@@ -1,4 +1,4 @@
-# Mixalune Control 0.1.1
+# Mixalune Control 0.1.2
 
 Macro Deck 3 plugin for Mixalune, prepared for Knowledgezip Media.
 Windows x64; local control only; no cloud service, Mixalune bundle, account, administrator privileges, or embedded credentials.
@@ -20,7 +20,7 @@ The target is existing basic volume/mute functionality. The inspected Mixalune s
 
 1. Install Macro Deck 3 beta.19 or later on Windows 10/11 x64.
 2. Use a Mixalune build with local control API 1.0 and its **API Settings** UI.
-3. Install `com.knowledgezip.mixalune-control-0.1.1.macroDeckPlugin`.
+3. Install `com.knowledgezip.mixalune-control-0.1.2.macroDeckPlugin`.
 4. Configure port and token; submitting setup tests the connection.
 5. Add a Mixalune Control action to a Macro Deck button.
 
@@ -39,11 +39,12 @@ dotnet build Mixalune.Control.slnx -c Release --no-restore
 dotnet test Mixalune.Control.slnx -c Release --no-build
 dotnet tool install MacroDeck.Plugin.Cli --version 3.0.0-beta.19 --tool-path .tools
 .tools/macrodeck-plugin build --source src/Mixalune.Control --output artifacts
-.tools/macrodeck-plugin test --artifact artifacts/com.knowledgezip.mixalune-control-0.1.1.macroDeckPlugin
+.tools/macrodeck-plugin test --artifact artifacts/com.knowledgezip.mixalune-control-0.1.2.macroDeckPlugin
 ```
 
 Distribution repository: [knowledgezip/Mixalune](https://github.com/knowledgezip/Mixalune). The Macro Deck plugin source is available under the MIT license in this branch. Mixalune itself is not included.
 Store builds use the official Macro Deck reusable publishing workflow. Store availability requires review and approval.
+
 
 
 

@@ -14,3 +14,4 @@
 
 For bug reports include plugin, Macro Deck and Mixalune versions, port, safe last-error text, and steps. Never include API tokens or credential stores.
 
+

@@ -23,3 +23,4 @@ Serilog: Copyright Serilog Contributors.
 MacroDeck.Plugin.Analyzers is build-time only.
 Mixalune branding is supplied from the existing Mixalune application; no Macro Deck logo is included.
 
+

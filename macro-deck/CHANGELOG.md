@@ -4,11 +4,17 @@ All notable changes to the Macro Deck plugin are recorded here. Versions follow 
 
 ## Unreleased
 
+No unreleased changes yet.
+
+## 0.1.2 — 2026-10-24
+
+Store candidate; desktop/audio acceptance remains pending. The 0.1.1 GitHub tag targeted main and is superseded without a Store release.
+
 ### Added
 - MIT-licensed Macro Deck plugin source, tests, and official Store build workflow.
 
 ### Changed
-- Prepare 0.1.1 with Macro Deck SDK and CLI 3.0.0-beta.19 and AI asset disclosure.
+- Prepare 0.1.2 with Macro Deck SDK and CLI 3.0.0-beta.19 and AI asset disclosure.
 
 ### Fixed
 - No unreleased fixes yet.
@@ -43,4 +49,5 @@ Development preview; actual desktop integration and live-audio acceptance testin
 3. Record compatibility requirements, known limitations, and actual validation results.
 4. Update the compiled installer, checksum, and setup instructions together.
 5. Keep this plugin source synchronized with each build. Never commit user settings, credentials, generated outputs, Mixalune application source, or Stream Deck source.
+
 

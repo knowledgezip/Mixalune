@@ -40,3 +40,4 @@ Icons are supplied in the plugin's Assets folder. The package uses Mixalune's ex
 
 There are no soundboard, EQ, routing, profile, or Plus/Pro placeholder actions.
 
+

@@ -20,3 +20,4 @@ Mixalune need not start first after configuration is saved. Retries use delays o
 
 The protocol authenticates within five seconds after socket upgrade, regardless of a longer configured connection timeout. There is no token in the URL, no browser Origin, and no remote-host option.
 
+
