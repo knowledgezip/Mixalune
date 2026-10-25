@@ -15,7 +15,8 @@ jobs:
       changelog: ${{ github.event.release.body }}
       test-path: macro-deck/source/Mixalune.Control.slnx
       cli-version: 3.0.0-beta.19
-      build-per-platform: true
+      build-per-platform: false
       run-tests: true
       run-stub-host: true
       upload-artifact: true
+

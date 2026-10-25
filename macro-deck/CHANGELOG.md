@@ -4,7 +4,7 @@ All notable changes to the Macro Deck plugin are recorded here. Versions follow 
 
 ## Unreleased
 
-No unreleased changes yet.
+- Added the separately downloadable Mixalune Icons 1.0.0 ZIP (24 button icons and preview sheet).
 
 ## 0.2.0 — 2026-10-24
 
@@ -64,4 +64,6 @@ Development preview; actual desktop integration and live-audio acceptance testin
 4. Update the compiled installer, checksum, and setup instructions together.
 5. Keep this plugin source synchronized with each build. Never commit user settings, credentials, generated outputs, Mixalune application source, or Stream Deck source.
 
+### Publishing workflow maintenance (2026-10-24)
+- Use the official single-build path for this plain .NET, Windows-only plugin. The previous multi-platform merge failed to locate its one handed-over package. Tests, Windows stub-host conformance and trusted upload remain enabled.
 

@@ -51,3 +51,5 @@ Icons are supplied in the plugin's Assets folder. The package uses Mixalune's ex
 There are no soundboard, EQ, routing, profile, or Plus/Pro placeholder actions.
 
 
+
+The optional [Mixalune icon ZIP](../../downloads/mixalune-icons-1.0.0.zip) includes 24 button images and a preview sheet. Extract it and choose the desired PNG in the button appearance editor. Artwork does not imply an available API action.

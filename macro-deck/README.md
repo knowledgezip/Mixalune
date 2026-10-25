@@ -31,3 +31,7 @@ Record new features and fixes under **Unreleased** in [CHANGELOG.md](CHANGELOG.m
 The Macro Deck plugin is now open source under MIT; see [source and build instructions](source/README.md). The 0.2.0 download above is a local beta candidate using SDK beta.19. Version 0.1.2 installation and live controls were confirmed by the tester; 0.2.0 desktop testing remains pending. Mixalune application and Stream Deck source are not included.
 
 The [existing 0.1.0 prerelease](https://github.com/knowledgezip/Mixalune/releases/tag/mixalune-control-v0.1.0) remains available. The [Elgato Stream Deck plugin](https://github.com/knowledgezip/Mixalune/tree/feature/mixalune-stream-deck) has its own separate branch and package format.
+
+## Optional button icon pack
+
+[Download Mixalune Icons 1.0.0](downloads/mixalune-icons-1.0.0.zip) — 24 PNG button icons plus a preview sheet, supplied by Knowledgezip Media. Extract the ZIP and select an image using Macro Deck's button appearance editor. This is a separate image pack, not an installable plugin. Images for routing, soundboard and EQ are artwork only; they do not add unsupported actions.
