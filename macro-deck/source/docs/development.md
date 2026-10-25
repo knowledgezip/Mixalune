@@ -39,3 +39,12 @@ No new dependencies. Version 0.2.0 still requires desktop-host and audio accepta
 ## User-confirmed 0.2.0 desktop test (2026-10-24)
 
 The tester explicitly confirmed installation of plugin 0.2.0 with the updated Mixalune build and successful noise-gate threshold button operation. This is user-reported desktop evidence, separate from automated tests. Long-duration audio stability, Windows sleep/resume, and clean-machine coverage remain unverified.
+
+## Store submission (2026-10-25)
+
+Creator Portal accepted trusted build 3 for version 0.2.0 from tag v0.2.0, commit 756a6d7af599701b8b19daff05b2560de16744f4, workflow run 40155173974. Windows conformance: 34 passed, 0 failed, 16 skipped. The release, summary, categories, manifest icon and two installed-host screenshots were submitted successfully. Portal status: In Review. Release automatically once approved is enabled. This is submission confirmation, not confirmation of public Store availability. The reviewer notes distinguish publisher-confirmed local package testing from CI stub-host testing.
+
+The supplied Mixalune icon ZIP (24 PNG icons and preview) is published as a separate GitHub release asset and linked in the Store changelog. It is an extractable image ZIP, not a native .macroDeckIconPack Store project.
+
+GitHub release: https://github.com/knowledgezip/Mixalune/releases/tag/v0.2.0
+Creator Portal: https://creators.macro-deck.app/projects/com.knowledgezip.mixalune-control/versions
