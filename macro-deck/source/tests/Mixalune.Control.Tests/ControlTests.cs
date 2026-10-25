@@ -242,6 +242,59 @@ public sealed class ControlTests
         await Until(() => state.Snapshot.Channels["custom-mic"].Name == "Renamed by user");
         Assert.That(state.Snapshot.Channels.Count, Is.EqualTo(1));
     }
+    [TestCase("noise-gate-set", -30, -30)]
+    [TestCase("noise-gate-up", 5, -40)]
+    [TestCase("noise-gate-down", 5, -50)]
+    [TestCase("noise-gate-up", 70, -10)]
+    [TestCase("noise-gate-down", 70, -80)]
+    public async Task Gate_controls_confirm_and_clamp(string id, double amount, double expected)
+    {
+        await Connect();
+        var action = (NoiseGateAction)MixaluneActionManager.Create(state, manager).Single(x => x.Id == id);
+        var result = await action.ExecuteAsync(new Dictionary<string, object?> { ["decibels"] = amount }, default);
+        Assert.That(result.Status, Is.EqualTo(ActionResultStatus.Succeeded));
+        Assert.That(state.Snapshot.NoiseGate!.ThresholdDb, Is.EqualTo(expected));
+        Assert.That(state.Snapshot.NoiseGate.Enabled, Is.False);
+    }
+    [TestCase(-81)]
+    [TestCase(-9)]
+    [TestCase(double.NaN)]
+    [TestCase(double.PositiveInfinity)]
+    public async Task Invalid_gate_threshold_never_sent(double value)
+    {
+        await Connect();
+        var action = new NoiseGateAction("noise-gate-set", "Set", state, manager);
+        Assert.That((await action.ExecuteAsync(new Dictionary<string, object?> { ["decibels"] = value }, default)).Status, Is.EqualTo(ActionResultStatus.Failed));
+        Assert.That(server.Commands, Does.Not.Contain("effects.setThreshold"));
+    }
+    [Test]
+    public async Task Old_server_preserves_volume_but_rejects_gate_adjustment()
+    {
+        server.SupportedCommands = server.SupportedCommands.Where(x => !x.StartsWith("effects.", StringComparison.Ordinal)).ToArray();
+        await Connect();
+        var action = new NoiseGateAction("noise-gate-up", "Up", state, manager);
+        Assert.That((await action.ExecuteAsync(new Dictionary<string, object?> { ["decibels"] = 1 }, default)).Status, Is.EqualTo(ActionResultStatus.Failed));
+        Assert.That((await action.GetActionStateAsync(new Dictionary<string, object?>(), default))!.ActiveStateId, Is.EqualTo("unavailable"));
+        Assert.That(server.Commands, Does.Not.Contain("effects.adjustThreshold"));
+        Assert.That((await Action("volume-up").ExecuteAsync(Parameters(), default)).Status, Is.EqualTo(ActionResultStatus.Succeeded));
+    }
+    [Test]
+    public async Task Gate_events_variables_and_reconnect_sync()
+    {
+        await Connect();
+        server.ThresholdDb = -32; server.GateEnabled = true;
+        server.Event("effects.changed", new { effects = new[] { server.GateState() } });
+        await Until(() => state.Snapshot.NoiseGate?.ThresholdDb == -32);
+        var integration = new MixaluneIntegration(state, manager);
+        Assert.That(await integration.ReadAsync("noise-gate-threshold-db"), Is.EqualTo(MacroDeck.Sdk.Variables.VariableReading.Of(-32d)));
+        Assert.That(await integration.ReadAsync("noise-gate-enabled"), Is.EqualTo(MacroDeck.Sdk.Variables.VariableReading.Of(true)));
+        server.ThresholdDb = -55; server.Disconnect();
+        await Until(() => server.Authentications >= 2 && state.Snapshot.Connected);
+        Assert.That(state.Snapshot.NoiseGate!.ThresholdDb, Is.EqualTo(-55));
+        server.Event("effects.changed", new { effects = Array.Empty<object>() });
+        await Until(() => state.Snapshot.NoiseGate is null);
+        Assert.That(await integration.ReadAsync("noise-gate-threshold-db"), Is.EqualTo(MacroDeck.Sdk.Variables.VariableReading.Unavailable));
+    }
     [Test]
     public void Newer_event_wins_over_confirmed_response()
     {

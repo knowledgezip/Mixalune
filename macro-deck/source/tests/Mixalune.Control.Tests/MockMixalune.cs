@@ -25,10 +25,13 @@ public sealed class MockMixalune : IAsyncDisposable
     public double Volume = .5;
     public double MonitorVolume = .4;
     public bool Muted;
+    public double ThresholdDb = -45;
+    public bool GateEnabled;
+    public object GateState() => new { effectId = "noise-gate", enabled = GateEnabled, thresholdDb = ThresholdDb };
     public string ChannelName = "Custom microphone name";
     public readonly ConcurrentQueue<string> Commands = new();
     public string[] SupportedCommands = ["system.getVersion", "system.getCapabilities", "system.getState", "system.ping", "channel.list",
-        "channel.getState", "channel.setVolume", "channel.adjustVolume", "channel.setMute", "channel.toggleMute", "microphone.toggleMute"];
+        "channel.getState", "channel.setVolume", "channel.adjustVolume", "channel.setMute", "channel.toggleMute", "microphone.toggleMute", "effects.setThreshold", "effects.adjustThreshold"];
     public object ChannelState() => new { channelId = "custom-mic", name = ChannelName, gameVolume = Volume, monitorVolume = MonitorVolume, volume = Volume, muted = Muted };
     public async Task StartAsync()
     {
@@ -85,10 +88,12 @@ public sealed class MockMixalune : IAsyncDisposable
                 switch (action)
                 {
                     case "auth.authenticate": data = new { authenticated = true }; break;
-                    case "system.getCapabilities": data = new { commands = SupportedCommands, edition = (string?)null, eventCategories = new[] { "channel", "microphone", "system" } }; break;
+                    case "system.getCapabilities": data = new { commands = SupportedCommands, edition = (string?)null, eventCategories = new[] { "channel", "microphone", "system", "effects" } }; break;
                     case "system.getVersion": data = new { version = "test", apiVersion = ApiVersion }; break;
                     case "channel.list": data = new { channels = new[] { ChannelState() } }; break;
-                    case "system.getState": data = new { channels = new[] { ChannelState() }, microphone = ChannelState() }; break;
+                    case "system.getState": data = new { channels = new[] { ChannelState() }, microphone = ChannelState(), effects = new { effects = new[] { GateState() } } }; break;
+                    case "effects.setThreshold": ThresholdDb = args.GetProperty("thresholdDb").GetDouble(); data = GateState(); break;
+                    case "effects.adjustThreshold": ThresholdDb = Math.Clamp(ThresholdDb + args.GetProperty("deltaDb").GetDouble(), -80, -10); data = GateState(); break;
                     case "events.subscribe": Interlocked.Increment(ref Subscriptions); data = new { }; break;
                     case "system.ping": data = new { pong = true }; break;
                     default:

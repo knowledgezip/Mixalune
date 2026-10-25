@@ -15,7 +15,10 @@ public static class MixaluneActionManager
         new MixerAction("toggle-mute", "Toggle Channel Mute", "channel.toggleMute", state, connection),
         new MixerAction("set-mute", "Set Channel Mute", "channel.setMute", state, connection),
         new MixerAction("microphone-mute", "Toggle Microphone Mute", "microphone.toggleMute", state, connection),
-        new MixerAction("reconnect", "Reconnect to Mixalune", "", state, connection)
+        new MixerAction("reconnect", "Reconnect to Mixalune", "", state, connection),
+        new NoiseGateAction("noise-gate-set", "Set Noise Gate Threshold", state, connection),
+        new NoiseGateAction("noise-gate-up", "Noise Gate Threshold Up", state, connection),
+        new NoiseGateAction("noise-gate-down", "Noise Gate Threshold Down", state, connection)
     ];
 }
 

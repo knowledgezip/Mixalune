@@ -3,8 +3,9 @@ using System.Text.Json;
 namespace Mixalune.Control;
 
 public sealed record MixaluneChannel(string Id, string Name, double GameVolume, double MonitorVolume, bool Muted);
+public sealed record MixaluneNoiseGate(bool Enabled, double ThresholdDb);
 public sealed record MixaluneSnapshot(bool Connected, string Status, string? Version, string? Edition,
-    IReadOnlyDictionary<string, MixaluneChannel> Channels, IReadOnlySet<string> Commands, string? MicrophoneId, string? Error);
+    IReadOnlyDictionary<string, MixaluneChannel> Channels, IReadOnlySet<string> Commands, string? MicrophoneId, string? Error, MixaluneNoiseGate? NoiseGate = null);
 
 public sealed class MixaluneStateManager
 {
@@ -24,7 +25,7 @@ public sealed class MixaluneStateManager
         if (version.GetProperty("apiVersion").GetString() != "1.0") throw new MixaluneApiException("VERSION", "This plugin requires local API 1.0.");
         lock (gate) snapshot = snapshot with
         {
-            Commands = commands, Version = version.GetProperty("version").GetString(),
+            Commands = commands, Version = version.GetProperty("version").GetString(), NoiseGate = null,
             Edition = capabilities.TryGetProperty("edition", out var edition) && edition.ValueKind == JsonValueKind.String ? edition.GetString() : null
         };
         Changed?.Invoke();
@@ -37,6 +38,7 @@ public sealed class MixaluneStateManager
         {
             snapshot = snapshot with { Channels = channels };
             if (data.TryGetProperty("microphone", out var mic)) snapshot = snapshot with { MicrophoneId = Parse(mic).Id };
+            if (data.TryGetProperty("effects", out var effects)) snapshot = snapshot with { NoiseGate = ParseEffects(effects) };
         }
         Changed?.Invoke();
     }
@@ -57,6 +59,7 @@ public sealed class MixaluneStateManager
         switch (message.GetProperty("event").GetString())
         {
             case "system.stateChanged": ReplaceChannels(data); break;
+            case "effects.changed": ReplaceEffects(data); break;
             case "channel.volumeChanged":
             case "channel.muteChanged":
             case "channel.added": ConfirmChannel(data); break;
@@ -79,6 +82,38 @@ public sealed class MixaluneStateManager
         if (command is "channel.list" or "system.getState") ReplaceChannels(data);
         else if (command.StartsWith("channel.", StringComparison.Ordinal)) ConfirmChannel(data);
         else if (command.StartsWith("microphone.", StringComparison.Ordinal)) ConfirmChannel(data, true);
+        else if (command == "effects.list") ReplaceEffects(data);
+        else if (command.StartsWith("effects.", StringComparison.Ordinal) && data.GetProperty("effectId").GetString() == "noise-gate")
+        {
+            var value = ParseGate(data);
+            lock (gate) snapshot = snapshot with { NoiseGate = value };
+            Changed?.Invoke();
+        }
+    }
+    void ReplaceEffects(JsonElement data)
+    {
+        var value = ParseEffects(data);
+        lock (gate) snapshot = snapshot with { NoiseGate = value };
+        Changed?.Invoke();
+    }
+    static MixaluneNoiseGate? ParseEffects(JsonElement data)
+    {
+        var effects = data.GetProperty("effects");
+        if (effects.GetArrayLength() > 512) throw new JsonException("Too many effects.");
+        MixaluneNoiseGate? result = null;
+        foreach (var effect in effects.EnumerateArray())
+            if (effect.GetProperty("effectId").GetString() == "noise-gate")
+            {
+                if (result is not null) throw new JsonException("Duplicate noise gate.");
+                result = ParseGate(effect);
+            }
+        return result;
+    }
+    static MixaluneNoiseGate ParseGate(JsonElement data)
+    {
+        var threshold = data.GetProperty("thresholdDb").GetDouble();
+        if (!double.IsFinite(threshold) || threshold < -80 || threshold > -10) throw new JsonException("Invalid noise gate threshold.");
+        return new(data.GetProperty("enabled").GetBoolean(), threshold);
     }
     static MixaluneChannel Parse(JsonElement data)
     {

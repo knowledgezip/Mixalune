@@ -9,6 +9,9 @@
 | Set Channel Mute | Channel, On/Off | `channel.setMute` |
 | Toggle Microphone Mute | None | `microphone.toggleMute`, or discovered microphone ID with `channel.toggleMute` |
 | Reconnect to Mixalune | None | New authenticated session and synchronization |
+| Set Noise Gate Threshold | Threshold (-80 to -10 dB, default -45) | `effects.setThreshold` |
+| Noise Gate Threshold Up | Increment (1 to 70 dB, default 1) | `effects.adjustThreshold` |
+| Noise Gate Threshold Down | Increment (1 to 70 dB, default 1) | `effects.adjustThreshold` |
 
 Channels are discovered. Names are displayed, stable IDs are saved. An unavailable saved ID is shown as unavailable in the dropdown and execution fails clearly; it is never replaced automatically.
 
@@ -29,9 +32,16 @@ For numeric text, use the variable picker in a button label. Example:
 
 ## Variables
 
+Noise-gate buttons control the microphone gate's threshold, not volume. Up raises the threshold (e.g. -45 to -44 dB), requiring louder sound to open the gate. Down lowers it. Mixalune clamps the result to -80 through -10 dB. Adjusting the threshold does not enable the gate; enable it in Mixalune first if desired. Adopt the action's state provider to show Gate enabled, Gate disabled, or Unavailable.
+
+Example: add **Noise Gate Threshold Up**, leave Increment at **1 dB**, and label the button `Gate: {{ vars.mixalune_noise_gate_threshold_db }} dB`. Add a second button with **Noise Gate Threshold Down** and the same increment. Use **Set Noise Gate Threshold**, **-45 dB**, for a reset button.
+
+Requires a Mixalune build advertising `effects.setThreshold` / `effects.adjustThreshold` (the API extension dated 2026-10-24). Older Mixalune builds retain volume/mute functionality, but these actions report an unavailable feature. Gate values refresh from `effects.changed` events and after reconnection, without continuous network polling.
+
 - `mixalune_connected`, `mixalune_status`, `mixalune_last_error`
 - `mixalune_edition`, `mixalune_version`, `mixalune_api_version`, `mixalune_channel_count`
 - `mixalune_microphone_muted`
+- `mixalune_noise_gate_threshold_db`, `mixalune_noise_gate_enabled`
 - `mixalune_channel_<key>_volume`, `mixalune_channel_<key>_monitor_volume`, `mixalune_channel_<key>_muted`
 
 Keys encode UTF-8 stable IDs as lowercase hexadecimal (long IDs use a stable SHA-256-derived key). Values become unavailable on disconnect. Removed channels leave the declarations; reads of stale IDs remain unavailable. Edition is “Not reported” when the API supplies no edition.

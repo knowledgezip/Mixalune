@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "com.knowledgezip.mixalune-control",
   "name": "Mixalune Control",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Local volume and mute controls for Mixalune.",
   "icon": "Assets/icon.png",
   "entrypoints": {
@@ -34,4 +34,3 @@
     "services": []
   }
 }
-

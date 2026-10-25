@@ -93,7 +93,8 @@ public sealed class MixaluneIntegration : IPluginIntegration, IConfigFlowProvide
                 Variable("connected", VariableType.Boolean), Variable("status", VariableType.Text),
                 Variable("edition", VariableType.Text), Variable("version", VariableType.Text),
                 Variable("api-version", VariableType.Text), Variable("channel-count", VariableType.Numeric),
-                Variable("last-error", VariableType.Text), Variable("microphone-muted", VariableType.Boolean)
+                Variable("last-error", VariableType.Text), Variable("microphone-muted", VariableType.Boolean),
+                Variable("noise-gate-threshold-db", VariableType.Numeric), Variable("noise-gate-enabled", VariableType.Boolean)
             };
             foreach (var channel in state.Snapshot.Channels.Values)
             {
@@ -118,6 +119,8 @@ public sealed class MixaluneIntegration : IPluginIntegration, IConfigFlowProvide
             "version" when s.Version is not null => VariableReading.Of(s.Version),
             "api-version" => VariableReading.Of("1.0"),
             "channel-count" => VariableReading.Of(s.Channels.Count),
+            "noise-gate-threshold-db" when s.NoiseGate is not null => VariableReading.Of(s.NoiseGate.ThresholdDb),
+            "noise-gate-enabled" when s.NoiseGate is not null => VariableReading.Of(s.NoiseGate.Enabled),
             "microphone-muted" when s.MicrophoneId is not null && s.Channels.TryGetValue(s.MicrophoneId, out var microphone) => VariableReading.Of(microphone.Muted),
             _ => ReadChannel(s, localId)
         };

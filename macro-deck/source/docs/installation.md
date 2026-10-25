@@ -11,12 +11,12 @@ Macro Deck supplies the .NET 10/ASP.NET Core runtime used by this framework-depe
 ## Install the local package
 
 In Macro Deck's Integrations page, use **Install from file…** to select
-`com.knowledgezip.mixalune-control-0.1.2.macroDeckPlugin`. Review its identity and install it.
+`com.knowledgezip.mixalune-control-0.2.0.macroDeckPlugin`. Review its identity and install it.
 This is a local unsigned development artifact, not a store-approved release.
 
 Do not rename it to a DLL or use Macro Deck 2's plugin-folder installation procedure. The official CLI assembles a manifest and `runtimes/win-x64` payload with file digests.
 
-The installer API and menu label are confirmed in the current host source; the desktop installation flow has not been exercised on an installed host here.
+Version 0.1.2 was installed and live controls were confirmed by the tester. Version 0.2.0 adds noise-gate controls and still requires installed-host verification.
 
 ## Enable Mixalune
 
@@ -31,3 +31,5 @@ Configure Mixalune Control in Macro Deck with the port and copied token. Setup t
 Remove or disable the integration using Macro Deck's plugin management. Its shutdown cancels pending work and disconnects from Mixalune. Mixalune remains running. Remove the saved integration configuration through the host if you also want its stored credential removed.
 
 
+
+For noise-gate threshold actions, also update Mixalune to a build advertising effects.setThreshold and effects.adjustThreshold. API 1.0 alone does not imply these optional capabilities. The plugin never attempts unsupported commands.

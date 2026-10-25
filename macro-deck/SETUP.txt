@@ -1,13 +1,15 @@
-Mixalune Control 0.1.0 - Development Preview
+Mixalune Control 0.2.0 - Development Preview
 
-Requires Windows 10/11 x64, Macro Deck 3 beta.17+, and a Mixalune build with local API 1.0 and API Settings. Older Mixalune builds without API Settings cannot connect.
+Requires Windows 10/11 x64, Macro Deck 3 beta.19+, and a Mixalune build with local API 1.0 and API Settings. Older Mixalune builds without API Settings cannot connect.
 
 Install: In Macro Deck > Integrations > Install from file, select the .macroDeckPlugin file. Enable the local API in Mixalune, copy its token, and configure the plugin with the matching port (default 18765). Add actions and select discovered channels.
 
 Volume percentages represent normalized fader travel, including boost. Mute is shared across the game and monitor outputs.
 
-Development status: 32 automated tests passed; package validation is clean. Macro Deck stub-host tests do not establish live application compatibility or audio stability. Actual desktop integration, sleep/resume, and audio-dropout testing remain pending.
+Development status: 43 automated plugin tests passed; package validation is clean. Macro Deck stub-host tests do not establish live application compatibility or audio stability. Actual desktop integration, sleep/resume, and audio-dropout testing remain pending.
 
 The public package contains compiled binaries, icons, and license notices. Source files, source archives, debug symbols, and user tokens are excluded. This is an unsigned development package, not a Macro Deck Store release.
 
 Repository: https://github.com/knowledgezip/Mixalune
+
+Noise gate: update Mixalune to a build with effects.setThreshold and effects.adjustThreshold. Add Set Noise Gate Threshold (-80 to -10 dB), Noise Gate Threshold Up, or Noise Gate Threshold Down (default 1 dB). Higher thresholds reject louder background sound. These actions preserve gate enablement. Set the button label using mixalune_noise_gate_threshold_db for the confirmed value. See source/docs/actions.md.

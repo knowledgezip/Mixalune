@@ -6,6 +6,20 @@ All notable changes to the Macro Deck plugin are recorded here. Versions follow 
 
 No unreleased changes yet.
 
+## 0.2.0 — 2026-10-24
+
+Local beta candidate; not yet verified in the desktop host or published to the Store.
+
+### Added
+- Set Noise Gate Threshold, Noise Gate Threshold Up, and Noise Gate Threshold Down in dB.
+- Confirmed threshold and enabled-state variables, effect event subscriptions, and reconnection synchronization.
+- Capability checks for the additive Mixalune API threshold extension. Existing volume/mute controls continue to work with older builds.
+
+### Compatibility
+- Requires an updated Mixalune build advertising `effects.setThreshold` and `effects.adjustThreshold` for the three new actions.
+- Threshold range is -80 to -10 dB; default adjustment is 1 dB. Gate enablement and release time remain unchanged.
+- No new dependencies, audio-engine changes, or licensing overrides.
+
 ## 0.1.2 — 2026-10-24
 
 Store candidate; desktop/audio acceptance remains pending. The 0.1.1 GitHub tag targeted main and is superseded without a Store release.

@@ -57,7 +57,7 @@ public sealed class MixaluneConnectionManager(MixaluneStateManager state) : IAsy
                 state.Metadata(capabilities, version);
                 await client.CommandAsync("channel.list", new { }, stop).ConfigureAwait(false);
                 var categories = capabilities.GetProperty("eventCategories").EnumerateArray().Select(x => x.GetString())
-                    .Where(x => x is "channel" or "microphone" or "system").ToArray();
+                    .Where(x => x is "channel" or "microphone" or "system" or "effects").ToArray();
                 await client.CommandAsync("events.subscribe", new { categories }, stop).ConfigureAwait(false);
                 await client.CommandAsync("system.getState", new { }, stop).ConfigureAwait(false);
                 active = client;
