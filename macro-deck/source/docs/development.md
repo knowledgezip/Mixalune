@@ -35,3 +35,7 @@ Macro Deck 3.0.0-beta.19 on Windows loaded plugin 0.1.2 and displayed Ready, sev
 43 plugin automated tests passed, including threshold set/up/down, boundary clamping, invalid values rejected before transmission, older-server compatibility, effect events, variables, and reconnection synchronization. Official packaged-plugin conformance suite 1.3.0: 34 passed, 0 failed, 16 skipped. A separate private Mixalune test run passed 64 tests, including the real authenticated loopback API's threshold commands, model mutation and native change events. The updated Windows x64 application and plugin package both built successfully. Existing NAudio deprecation warnings remain in the application build.
 
 No new dependencies. Version 0.2.0 still requires desktop-host and audio acceptance testing. The previous tester confirmation applies to 0.1.2 only. Application source and private API implementation tests are not part of this public plugin repository.
+
+## User-confirmed 0.2.0 desktop test (2026-10-24)
+
+The tester explicitly confirmed installation of plugin 0.2.0 with the updated Mixalune build and successful noise-gate threshold button operation. This is user-reported desktop evidence, separate from automated tests. Long-duration audio stability, Windows sleep/resume, and clean-machine coverage remain unverified.

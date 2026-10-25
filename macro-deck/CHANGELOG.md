@@ -8,7 +8,7 @@ All notable changes to the Macro Deck plugin are recorded here. Versions follow 
 
 ## 0.2.0 — 2026-10-24
 
-Local beta candidate; not yet verified in the desktop host or published to the Store.
+Beta candidate; tester confirmed installed 0.2.0 noise-gate controls on 2026-10-24. Store publication is pending review.
 
 ### Added
 - Set Noise Gate Threshold, Noise Gate Threshold Up, and Noise Gate Threshold Down in dB.
@@ -66,4 +66,3 @@ Development preview; actual desktop integration and live-audio acceptance testin
 
 ### Publishing workflow maintenance (2026-10-24)
 - Use the official single-build path for this plain .NET, Windows-only plugin. The previous multi-platform merge failed to locate its one handed-over package. Tests, Windows stub-host conformance and trusted upload remain enabled.
-
