@@ -4,6 +4,16 @@ All notable changes to the Macro Deck plugin are recorded here. Versions follow 
 
 ## Unreleased
 
+- No unreleased changes.
+
+## 0.2.1 — 2026-10-25
+
+- Removed committed plugin packages and added ignores for compiled packages and DLLs. Dependencies restore from NuGet.
+- Moved the full README and MIT license to the repository root; corrected installation links.
+- Replaced the plugin icon with the supplied logo without a wordmark.
+- Release assets must come from the official trusted publishing workflow with artifact upload enabled.
+- Runtime controls are unchanged from user-tested 0.2.0; Store approval is pending.
+
 - Added the separately downloadable Mixalune Icons 1.0.0 ZIP (24 button icons and preview sheet).
 
 ## 0.2.0 — 2026-10-24

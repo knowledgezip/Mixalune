@@ -11,12 +11,12 @@ Macro Deck supplies the .NET 10/ASP.NET Core runtime used by this framework-depe
 ## Install the local package
 
 In Macro Deck's Integrations page, use **Install from file…** to select
-`com.knowledgezip.mixalune-control-0.2.0.macroDeckPlugin`. Review its identity and install it.
+`com.knowledgezip.mixalune-control-0.2.1.macroDeckPlugin`. Review its identity and install it.
 This is a local unsigned development artifact, not a store-approved release.
 
 Do not rename it to a DLL or use Macro Deck 2's plugin-folder installation procedure. The official CLI assembles a manifest and `runtimes/win-x64` payload with file digests.
 
-Version 0.1.2 was installed and live controls were confirmed by the tester. Version 0.2.0 adds noise-gate controls and still requires installed-host verification.
+Version 0.1.2 was installed and live controls were confirmed by the tester. The publisher also confirmed 0.2.0 noise-gate controls. Version 0.2.1 changes packaging, documentation and branding only.
 
 ## Enable Mixalune
 

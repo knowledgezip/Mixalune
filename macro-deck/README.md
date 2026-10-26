@@ -1,8 +1,8 @@
 # Mixalune Control for Macro Deck 3
 
-Version **0.2.0** — noise-gate beta candidate.
+Version **0.2.1** — Store review corrections.
 
-[Download the plugin](https://github.com/knowledgezip/Mixalune/raw/refs/heads/feature/mixalune-macro-deck/macro-deck/downloads/com.knowledgezip.mixalune-control-0.2.0.macroDeckPlugin) · [SHA-256 checksum](downloads/com.knowledgezip.mixalune-control-0.2.0.macroDeckPlugin.sha256) · [Setup instructions](SETUP.txt) · [Changelog](CHANGELOG.md)
+[Trusted release downloads](https://github.com/knowledgezip/Mixalune/releases) · [Setup instructions](SETUP.txt) · [Changelog](CHANGELOG.md)
 
 ## Setup
 
@@ -22,16 +22,18 @@ Game/stream and monitor volumes can be controlled separately; mute is shared. Pe
 
 ## Development status
 
-43 automated plugin tests passed and package validation was clean. Stub-host conformance and mock-server testing do not certify actual Macro Deck/Mixalune desktop integration or audio stability. Live application, sleep/resume, and audio-dropout testing remain pending. This unsigned development preview is not a Macro Deck Store release.
+43 automated plugin tests passed and package validation was clean. Stub-host conformance and mock-server testing do not certify actual Macro Deck/Mixalune desktop integration or audio stability. The publisher confirmed 0.2.0 live controls, including noise-gate threshold changes. Sleep/resume and long-duration audio-dropout testing remain unverified. This unsigned development preview is not a Macro Deck Store release.
 
 ## Updates and distribution
 
 Record new features and fixes under **Unreleased** in [CHANGELOG.md](CHANGELOG.md). For each release, add a dated version entry and update the compiled package, checksum, and setup instructions together.
 
-The Macro Deck plugin is now open source under MIT; see [source and build instructions](source/README.md). The 0.2.0 download above is a local beta candidate using SDK beta.19. Version 0.1.2 installation and live controls were confirmed by the tester; 0.2.0 desktop testing remains pending. Mixalune application and Stream Deck source are not included.
+The Macro Deck plugin is now open source under MIT; see [source and build instructions](../README.md). Release packages come from the trusted Store workflow using SDK beta.19. The publisher confirmed 0.2.0 installation and noise-gate controls; 0.2.1 changes packaging, documentation and branding only. Mixalune application and Stream Deck source are not included.
 
 The [existing 0.1.0 prerelease](https://github.com/knowledgezip/Mixalune/releases/tag/mixalune-control-v0.1.0) remains available. The [Elgato Stream Deck plugin](https://github.com/knowledgezip/Mixalune/tree/feature/mixalune-stream-deck) has its own separate branch and package format.
 
 ## Optional button icon pack
 
 [Download Mixalune Icons 1.0.0](downloads/mixalune-icons-1.0.0.zip) — 24 PNG button icons plus a preview sheet, supplied by Knowledgezip Media. Extract the ZIP and select an image using Macro Deck's button appearance editor. This is a separate image pack, not an installable plugin. Images for routing, soundboard and EQ are artwork only; they do not add unsupported actions.
+
+Compiled plugin packages are excluded from Git. Release assets are taken only from the official publish-plugin.yml run with upload-artifact enabled. Dependencies are restored from NuGet.

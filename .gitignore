@@ -14,3 +14,8 @@
 .env.*
 connection.json
 node_modules/
+
+# Store packages must come from trusted workflow artifacts, never Git
+*.macroDeckPlugin
+*.macroDeckPlugin.sha256
+*.dll
