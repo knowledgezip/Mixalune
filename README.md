@@ -1,5 +1,9 @@
 # Mixalune Control 0.2.1
 
+<a href="https://macro-deck.app/store/com.knowledgezip.mixalune-control"><img alt="Open in the Macro Deck Store" src="https://assets.macro-deck.app/branding/Open%20in%20the%20Macro%20Deck%20Store%20Badge%20Dark.png" height="56"></a>
+
+Store approval is pending; this badge will open the listing after publication.
+
 Macro Deck 3 plugin for Mixalune, prepared for Knowledgezip Media.
 Windows x64; local control only; no cloud service, Mixalune bundle, account, administrator privileges, or embedded credentials.
 
