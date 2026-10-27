@@ -48,3 +48,13 @@ The supplied Mixalune icon ZIP (24 PNG icons and preview) is published as a sepa
 
 GitHub release: https://github.com/knowledgezip/Mixalune/releases/tag/v0.2.0
 Creator Portal: https://creators.macro-deck.app/projects/com.knowledgezip.mixalune-control/versions
+
+## 0.2.1 review corrections and installed validation (2026-10-26)
+
+Source tag v0.2.1 is commit efa4434740695ffe40b3c3a290f72804568a9379. Trusted publish-plugin.yml run 40260680848 completed successfully with upload-artifact enabled; Creator Portal accepted build 4. Windows conformance suite: 34 passed, 0 failed, 16 skipped. Plugin automated suite: 43 passed.
+
+The trusted workflow ZIP hash matched 632da17ee0f38c64f67df650fdbf03a53073ff6a061b5fc05967700e9e35d9d9. Its plugin package and SHA-256 checksum were attached to the GitHub v0.2.1 release. No compiled packages or dependency DLLs remain tracked in the current branch.
+
+Installed that exact trusted package over 0.1.2 in Macro Deck beta.19. The host reported 0.2.1 Ready, Running cleanly, Fully compatible, 10 actions and 22 variables. Updated the local Mixalune application with the noise-gate API extension, preserving its prior files in a local backup. The plugin reconnected using saved credentials and reported API 1.0, four channels, and live threshold/enabled variables. Threshold Up 1 dB succeeded and the Mixalune UI reflected the increase. Threshold Down 1 dB succeeded, restoring the previous threshold. Mixer processing was resumed. This is installed-host evidence; long-duration listening, sleep/resume and clean-machine tests remain unverified.
+
+Current screenshots are under docs/screenshots. Store approval remains pending.
